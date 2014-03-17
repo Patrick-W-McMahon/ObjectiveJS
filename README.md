@@ -1,0 +1,4 @@
+ObjectiveJS
+===========
+
+Javascript OOP lib
