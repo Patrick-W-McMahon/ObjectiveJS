@@ -1,7 +1,7 @@
 ObjectiveJS
 ===========
 
-an OOP Javascript lib that make javascript work more like c++/Java
+an OOP Javascript library that make javascript work more like c++/Java
 
 This library is ment to add more functions to base objects in the core javascript framework. It will work along side other libraries like JQuery with no problems. some of the files are plugable by them self. but you will need core, and math for a basic install. 
 
