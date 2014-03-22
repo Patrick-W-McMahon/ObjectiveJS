@@ -13,12 +13,12 @@ var GEO = {
 	},
 
 	distanceLatLonInMeters: function(lat1,lon1,lat2,lon2){
-		return Math.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * 1000; 
+		return GEO.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * 1000; 
 	},
 	
 	distanceLatLonInMiles: function(lat1,lon1,lat2,lon2){
 		var kilometersToMilesConstant = 0.621371;
-		return Math.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * kilometersToMilesConstant;
+		return GEO.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * kilometersToMilesConstant;
 	}
 	
 
