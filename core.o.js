@@ -3,6 +3,11 @@ Function.prototype.Inherits = function(parent){
 	this.prototype.constructor = this;
 };
 
+Function.prototype.extends = function(parent){
+	this.prototype = new parent();
+	this.prototype.constructor = this;
+};
+
 Object.include = function(file) {
 	var e=window.document.createElement('script');
 	e.setAttribute('src',file);
