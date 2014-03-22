@@ -1,7 +1,19 @@
 var GEO = {
+	
+	radius: function(planet){
+		switch(planet){
+			case 'earth':
+				return 6378.15;	
+			break;
+		}
+	}
+	
+	kilometersToMilesConstant: function(){
+		return 0.621371;
+	}
 
 	distanceLatLonInKilometers: function(lat1,lon1,lat2,lon2){
-		var R = 6378.15;
+		var R = GEO.radius('earth');
 		var dLat = (lat2-lat1) * Math.PI / 180;
 		var dLon = (lon2-lon1) * Math.PI / 180;
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -17,8 +29,7 @@ var GEO = {
 	},
 	
 	distanceLatLonInMiles: function(lat1,lon1,lat2,lon2){
-		var kilometersToMilesConstant = 0.621371;
-		return GEO.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * kilometersToMilesConstant;
+		return GEO.distanceLatLonInKilometers(lat1,lon1,lat2,lon2) * GEO.kilometersToMilesConstant;
 	}
 	
 
