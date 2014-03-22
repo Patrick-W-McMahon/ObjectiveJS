@@ -9,32 +9,32 @@ Object.include = function(file) {
 	window.document.body.appendChild(e);
 };
 
-Object.replaceWithValid = function(testValue,defaultValue){
-	if(testValue==undefined||testValue==null){
-		return defaultValue;
+Object.replaceWithValid = function(default){
+	if(this==undefined||this==null){
+		return default;
 	}
-	return testValue;
+	return this;
 };
 
-Object.isValidVar = function(testValue){
-	if(testValue==undefined||testValue==null){
+Object.isValidVar = function(){
+	if(this==undefined||this==null){
 		return false;
 	}else{
 		return true;
 	}
 };
 
-Object.functionTestExe = function(func){
-	if(typeof(func) == "function"){
-		func();
+Object.functionTestExe = function(){
+	if(typeof(this) == "function"){
+		this();
 	}
 };
 
-Object.functionTestExeElse = function(func,el){
-	if(typeof(func) == "function"){
-		func();
+Object.functionTestExeElse = function(e){
+	if(typeof(this) == "function"){
+		this();
 	}else{
-		el();
+		e();
 	}
 }
 
