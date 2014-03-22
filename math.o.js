@@ -78,6 +78,10 @@ Math.AngleOfReflection = function(angleToWall){
 	return 180 - angleToWall;
 };
 
-Math.dotProductOf2Points = function(objA,objB){
+Math.dotProductOf2Points = function(ax,ay,bx,by){
+	return (ax * bx)+(ay * by);
+};
+
+Math.dotProductOf2PointsObj = function(objA,objB){
 	return (objA.x * objB.x)+(objA.y * objB.y);
 };
