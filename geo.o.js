@@ -6,7 +6,7 @@ var GEO = {
 		this.currentRadius=r;
 	}
 	
-	radius: function(planet){
+	radiusOf: function(planet){
 		switch(planet){
 			case 'earth':
 				return 6378.15;	
