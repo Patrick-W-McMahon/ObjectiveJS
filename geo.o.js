@@ -1,5 +1,11 @@
 var GEO = {
 	
+	currentRadius:6378.15,
+	
+	setRadius: function(r){
+		this.currentRadius=r;
+	}
+	
 	radius: function(planet){
 		switch(planet){
 			case 'earth':
@@ -13,7 +19,7 @@ var GEO = {
 	}
 
 	distanceLatLonInKilometers: function(lat1,lon1,lat2,lon2){
-		var R = GEO.radius('earth');
+		var R = this.currentRadius;
 		var dLat = (lat2-lat1) * Math.PI / 180;
 		var dLon = (lon2-lon1) * Math.PI / 180;
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
