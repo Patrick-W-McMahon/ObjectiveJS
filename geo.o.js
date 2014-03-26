@@ -6,10 +6,49 @@ var GEO = {
 		this.currentRadius=r;
 	}
 	
-	radiusOf: function(planet){
-		switch(planet){
+	radiusOf: function(planet){/*kilometers*/
+		switch(planet.toLowerCase()){
 			case 'earth':
 				return 6378.15;	
+			break;
+			case 'mars':
+				return 3397;	
+			break;
+			case 'moon':
+				return 1737.4;	
+			break;
+			case 'sun':
+				return 695500;	
+			break;
+			case 'mercury':
+				return 2440;	
+			break;
+			case 'venus':
+				return 6052;
+			break;
+			case 'jupiter':
+				return 69911;	
+			break;
+			case 'saturn':
+				return 58232;	
+			break;
+			case 'neptune':
+				return 24622;	
+			break;
+			case 'uranus':
+				return 25362;	
+			break;
+			case 'pluto':
+				return 1180;	
+			break;
+			case 'io':
+				return 3642;	
+			break;
+			case 'europa':
+				return 3122;	
+			break;
+			case 'ganymede':
+				return 5262;	
 			break;
 		}
 	}
