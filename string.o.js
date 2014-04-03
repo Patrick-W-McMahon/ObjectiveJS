@@ -1,5 +1,4 @@
 
-
 String.strReplaceNthSub(needle, replacement, occurrence){
   var arr = this.split(needle);
   if(occurrence < arr.length){
@@ -8,4 +7,24 @@ String.strReplaceNthSub(needle, replacement, occurrence){
     this = arr.join();
   }
   return this;
+}
+
+
+String.subStringCount(subString,step){
+  if(step==null||step==undefined||step==0){
+    step=subString.length;
+  }
+  if(subString.length<=0){
+    return 0;
+  }
+  var pos = 0;
+  var count = 0;
+  while(true){
+    pos = String.indexOf(subString,pos);
+    if(pos>=0){
+      count++;
+      pos+=step;
+    }else break;
+  }
+  return count;
 }
