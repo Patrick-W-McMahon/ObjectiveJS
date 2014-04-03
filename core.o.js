@@ -14,6 +14,10 @@ Object.include = function(file) {
 	window.document.body.appendChild(e);
 };
 
+Object.unset(){
+	delete this;
+}
+
 Object.replaceWithValid = function(default){
 	if(this==undefined||this==null){
 		return default;
