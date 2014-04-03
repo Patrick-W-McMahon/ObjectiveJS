@@ -1,4 +1,4 @@
-String.prototype.strReplaceNthSub = function(needle, replacement, occurrence){
+String.strReplaceNthSub = function(needle, replacement, occurrence){
   var arr = this.split(needle);
   if(occurrence < arr.length){
     arr[occurrence - 1] += replacement + arr[occurrence];
@@ -9,7 +9,7 @@ String.prototype.strReplaceNthSub = function(needle, replacement, occurrence){
 }
 
 
-String.prototype.subStringCount = funciton(subString,step){
+String.subStringCount = function(subString,step){
   if(step==null||step==undefined||step==0){
     step=subString.length;
   }
