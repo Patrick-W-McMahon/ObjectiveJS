@@ -6,11 +6,11 @@ var GEO = {
 				return 6378.15;	
 			break;
 		}
-	}
+	},
 	
 	kilometersToMilesConstant: function(){
 		return 0.621371;
-	}
+	},
 
 	distanceLatLonInKilometers: function(lat1,lon1,lat2,lon2){
 		var R = GEO.radius('earth');
