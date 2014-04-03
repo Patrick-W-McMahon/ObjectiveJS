@@ -13,3 +13,5 @@ geo.o.js adds functions that have to do with geography calculations. Most of the
 
 array.o.js extends the functions for the array object.
 
+string.o.js extends the functions for the string object.
+
