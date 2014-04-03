@@ -15,3 +15,5 @@ array.o.js extends the functions for the array object.
 
 string.o.js extends the functions for the string object.
 
+misc.o.js a bunch of miscellaneous functions. 
+
