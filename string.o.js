@@ -13,7 +13,7 @@ String.subStringCount = function(subString,step){
   if(step==null||step==undefined||step==0){
     step=subString.length;
   }
-  if(subString.length<=0){
+  if(subString.length==0){
     return 0;
   }
   var pos = 0;
