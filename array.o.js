@@ -53,4 +53,31 @@ Array.quickSort = function(){
     }
     this=sorted;
 }
+ 
+Array.mergeSort = function(){
+    if (this.length < 2)
+        return this;
+
+    var middle = parseInt(this.length / 2);
+    var left   = this.slice(0, middle);
+    var right  = this.slice(middle, this.length);
+    this = this.merge(this.mergeSort(left), this.mergeSort(right));
+    return this;
+}
+ 
+Array.merge = function(left, right){
+    var result = [];
+    while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+    while (left.length)
+        result.push(left.shift());
+    while (right.length)
+        result.push(right.shift());
+    return result;
+}
 
