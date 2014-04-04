@@ -25,3 +25,32 @@ Array.bubbleSort = function(){
 		}
 	}while(swapped);
 }
+
+ 
+Array.quickSort = function(){
+    var stack = [this];
+    var sorted = [];
+    while (stack.length) {
+        var temp = stack.pop(), tl = temp.length;
+        if (tl == 1) {
+            sorted.push(temp[0]);
+            continue;
+        }
+        var pivot = temp[0];
+        var left = [], right = [];
+        for (var i = 1; i &lt; tl; i++) {
+            if (temp[i] &lt; pivot) {
+                left.push(temp[i]);
+            } else {
+                right.push(temp[i]);
+            }
+        }
+        left.push(pivot);
+        if (right.length)
+            stack.push(right);
+        if (left.length)
+            stack.push(left);
+    }
+    this=sorted;
+}
+
