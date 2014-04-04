@@ -10,3 +10,18 @@ Array.searchHaystack = function(needle){
 	}
 	return false;
 };
+
+Array.bubbleSort = function(){
+	var swapped;
+	do{
+		swapped = false;
+		for (var i=0; i < this.length-1; i++) {
+			if (this[i] > this[i+1]) {
+				var temp = this[i];
+				this[i] = this[i+1];
+				this[i+1] = temp;
+				swapped = true;
+			}
+		}
+	}while(swapped);
+}
