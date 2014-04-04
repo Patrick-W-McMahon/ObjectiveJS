@@ -9,7 +9,7 @@ core.o.js holds core functions for inheritance and other basic functions that ar
 
 math.o.js extends the math functions and adds new ones that are needed.
 
-geo.o.js adds functions that have to do with geography calculations. Most of the calculations have to do with latitude and longitude.
+geo.o.js adds functions that have to do with geographical calculations. Most of the calculations have to do with latitude and longitude.
 
 array.o.js extends the functions for the array object.
 
