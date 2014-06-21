@@ -1,4 +1,4 @@
 function DOM(){
 
-	this.State = function(f){/in/(document.readyState)?setTimeout(this.State,9,f):f()};
+	this.State = function(f){/in/.test(document.readyState)?setTimeout('this.ready('+f+')',9):f()};
 };
