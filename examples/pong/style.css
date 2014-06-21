@@ -1,12 +1,18 @@
-body{
+html,body{
   background:black;
   color:white;
+  width:800px;
+  padding:0px;
+  margin:0px auto 0px auto;
+}
+
+h1{
+	text-align:center;
 }
 
 canvas{
   background:white;
-  margin-left:auto;
-  margin-right:auto;
+  margin:0px auto 0px auto;
   height:400px;
   width:800px;
 }
