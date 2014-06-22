@@ -25,45 +25,50 @@ function Ball(){
 	}
 	
 	this.update = function(){
-		var oldX=this.x;
-		var oldY=this.y;
-		this.y = Math.findYofCircleByDegrees(this.y,speed,this.direction);
-		this.x = Math.findXofCircleByDegrees(this.x,speed,this.direction);
-		if(this.x<0){
-			this.gameEngine.addEvent(new this.gameEngine.Event());
-			this.x=0;
-			var wallX = 0;
-			var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);
-			this.direction = Math.AngleOfReflection(Math.angleOfTwoLines(this.x,this.y,wallX,wallY));
+		if(this.gameEngine.frameCount>100){
+			var oldX=this.x;
+			var oldY=this.y;
+			this.y = Math.findYofCircleByDegrees(this.y,speed,this.direction);
+			this.x = Math.findXofCircleByDegrees(this.x,speed,this.direction);
+			if(this.x<0){
+				this.gameEngine.addEvent({name:"pointForPC"});
+				this.x=0;
+				var wallX = 0;
+				var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);
+				this.direction = Math.AngleOfReflection(Math.angleOfTwoLines(this.x,this.y,wallX,wallY));
+			}
+			if(this.x+this.radius>this.gameEngine.getDisplayWidth()){
+				this.gameEngine.addEvent({name:"pointForPlayer"});
+				var v=this.direction;
+				var n=90;
+				var u = (v*n/n*n)*n;
+				var w=v-u;
+				this.direction=w;
+				//this.direction = 2 * (90 - this.direction) + 180;
+			}
+			if(this.y<0){
+				this.y=0;
+				var wallX = 0;
+				var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);
+				this.direction = Math.AngleOfReflection(Math.angleOfTwoLines(this.x,this.y,wallX,wallY));
+			}
+			if(this.y+this.radius>this.gameEngine.getDisplayHeight()){
+				var v=this.direction;
+				var n=90;
+				var u = (v*n/n*n)*n;
+				var w=v-u;
+				this.direction=w;
+				//this.direction = 2 * (90 - this.direction) + 180;
+			}
+			var errorBuffer = 3;
+			if(this.x<-errorBuffer||this.y<-errorBuffer||this.x>this.gameEngine.getDisplayWidth()+errorBuffer||this.y>this.gameEngine.getDisplayHeight()+errorBuffer){
+				this.x = this.gameEngine.getDisplayWidth()/2;
+				this.y = this.gameEngine.getDisplayHeight()/2; 
+				this.direction = Math.randomNumberRange(0,360);
+			}
 		}
-		if(this.x+this.radius>this.gameEngine.getDisplayWidth()){
-			var v=this.direction;
-			var n=90;
-			var u = (v*n/n*n)*n;
-			var w=v-u;
-			this.direction=w;
-			//this.direction = 2 * (90 - this.direction) + 180;
-		}
-		if(this.y<0){
-			this.y=0;
-			var wallX = 0;
-			var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);
-			this.direction = Math.AngleOfReflection(Math.angleOfTwoLines(this.x,this.y,wallX,wallY));
-		}
-		if(this.y+this.radius>this.gameEngine.getDisplayHeight()){
-			var v=this.direction;
-			var n=90;
-			var u = (v*n/n*n)*n;
-			var w=v-u;
-			this.direction=w;
-			//this.direction = 2 * (90 - this.direction) + 180;
-		}
-		var errorBuffer = 3;
-		if(this.x<-errorBuffer||this.y<-errorBuffer||this.x>this.gameEngine.getDisplayWidth()+errorBuffer||this.y>this.gameEngine.getDisplayHeight()+errorBuffer){
-			this.x = this.gameEngine.getDisplayWidth()/2;
-			this.y = this.gameEngine.getDisplayHeight()/2; 
-			this.direction = Math.randomNumberRange(0,360);
-		}
+		
+
 	}
 	
 	this.draw = function(g){

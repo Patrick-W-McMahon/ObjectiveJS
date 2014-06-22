@@ -33,8 +33,8 @@ function GameEngine(){
 					this.objects[x].input(this.keysDown,this.keysPressed,this.keysUp);
 				}
 			}
-			gameEngineThis.engineLog("Event Stack Length: "+this.eventStack.lenth);
-			if(this.eventStack.lenth>0){
+			gameEngineThis.engineLog("Event Stack Length: "+this.eventStack.length);
+			if(this.eventStack.length>0){
 				if(typeof(this.objects[x].eventLisener)==='function'){
 					this.objects[x].eventListener(this.eventStack);
 				}
@@ -50,8 +50,8 @@ function GameEngine(){
 		return this;
 	}
 	
-	this.addEvent = function(ev){
-		this.eventStack.push(ev);
+	this.addEvent = function(e){
+		this.eventStack.push(e);
 		if(this.eventStack.lenth<=this.eventStackIndex){
 			this.eventStack[this.eventStack.length-1].id=this.eventStackIndex;
 		}else{
@@ -192,6 +192,7 @@ function GameEngine(){
 		this.loopState=0;
 		this.purgeEvents();
 		this.purgeObjects();
+		this.frameCount=0;
 		this.render(this.display);
 	}
 	

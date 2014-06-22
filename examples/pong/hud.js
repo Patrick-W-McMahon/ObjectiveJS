@@ -1,19 +1,23 @@
 function HUD(){
 	this.gameEngine;
-	this.frameCount;
 
 	this.init = function(e){
 		this.gameEngine = e;
 	}
 	
 	this.update = function(){
-		this.frameCount = this.gameEngine.frameCount;
+
 	}
 	
 	this.draw = function(g){
 		g.fillStyle = "black";
 		g.font="12px Verdana";
-		g.fillText("Frames "+this.frameCount,10,50);
+		if(this.gameEngine.frameCount<100){
+			g.fillText("Ready ",this.gameEngine.getDisplayWidth()/2,this.gameEngine.getDisplayHeight()/2);
+		}else if(this.gameEngine.frameCount>100&&this.gameEngine.frameCount<130){
+			g.fillText("GO!! ",this.gameEngine.getDisplayWidth()/2,this.gameEngine.getDisplayHeight()/2);
+		}
+		
 	}
 
 }
