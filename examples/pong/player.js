@@ -8,9 +8,9 @@ function Player(s,c,n){
 	var defaultPaddleLength=20;
 	var paddleLength=defaultPaddleLength;
 	var paddleThickness=4;
-	var x=10;
+	var x=3;
 	var y=10;
-	var speed=1;
+	var speed=2;
 	var gameEngine;
 	
 	//this.prototype.ObjectType = "Player";

@@ -67,6 +67,21 @@ Math.degreesToRadians = function(deg){
 	return deg*(Math.PI/180);
 };
 
+
+Math.findXYofCircleByDegrees = function(xCenter,yCenter,radius,angle){
+	var x = xCenter + radius * Math.cos(angle);
+	var y = yCenter + radius * Math.sin(angle);
+	return [x,y];
+}
+
+Math.findYofCircleByDegrees = function(yCenter,radius,angle){
+	return yCenter + radius * Math.sin(angle);
+}
+
+Math.findXofCircleByDegrees = function(xCenter,radius,angle){
+	return xCenter + radius * Math.cos(angle);
+}
+
 Math.reflection = function(x,y){
 	var Val = [];
 	Val[0] = x+Math.cos(0)-y+Math.sin(0);
