@@ -48,12 +48,15 @@ function GameEngine(){
 	}
 	
 	window.onkeydown = function(e){
-		gameEngineThis.engineLog("Key Down "+e.keyCode);
-		gameEngineThis.engineLog("key index "+gameEngineThis.keysDown.indexOf(e.keyCode));
-		if(gameEngineThis.keysDown.indexOf(e.keyCode)==-1){
-			gameEngineThis.engineLog("key code added");
-			gameEngineThis.keysDown.push(e.keyCode);
+		if(gameEngineThis.loopState){
+			gameEngineThis.engineLog("Key Down "+e.keyCode);
+			gameEngineThis.engineLog("key index "+gameEngineThis.keysDown.indexOf(e.keyCode));
+			if(gameEngineThis.keysDown.indexOf(e.keyCode)==-1){
+				gameEngineThis.engineLog("key code added");
+				gameEngineThis.keysDown.push(e.keyCode);
+			}
 		}
+		
 	};
 	
 	this.setDisplay = function(canvas){
