@@ -12,6 +12,8 @@ function GameEngine(){
 	this.keysUp=[];
 	this.keysPressed=[];
 	this.engineMode="live";
+	this.frameCount=0;
+	this.eventStack=[];
 	
 	this.init = function(){
 		for(var x=0;x<this.objects.length;x++){
@@ -31,8 +33,55 @@ function GameEngine(){
 					this.objects[x].input(this.keysDown,this.keysPressed,this.keysUp);
 				}
 			}
+			gameEngineThis.engineLog("Event Stack Length: "+this.eventStack.lenth);
+			if(this.eventStack.lenth>0){
+				if(typeof(this.objects[x].eventLisener)==='function'){
+					this.objects[x].eventListener(this.eventStack);
+				}
+			}
 		}
 		this.clearKeys();
+	}
+	
+	this.Event = function(){
+		this.id;
+		this.name;
+		this.data=[];
+		return this;
+	}
+	
+	this.addEvent = function(ev){
+		this.eventStack.push(ev);
+		if(this.eventStack.lenth<=this.eventStackIndex){
+			this.eventStack[this.eventStack.length-1].id=this.eventStackIndex;
+		}else{
+			this.eventStack[this.eventStack.length-1].id=this.eventStack.length;
+		}
+		this.eventStackIndex++;
+		return this.eventStack[this.eventStack.length-1].id;//return the event id
+	}
+	
+	this.removeEvent = function(id){//pass id of event
+		this.removeEventByIndex(this.getIndexOfEvent(id));
+	}
+	
+	this.purgeEvents = function(){
+		this.eventStack = [];
+	}
+	
+	this.getIndexOfEvent = function(v){//pass id of event
+		var index = -1;
+		for(var i=0;i<this.eventStack.length;i++){
+			if(this.eventStack[i].id === v){
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
+	
+	this.removeEventByIndex = function(i){//pass index of event
+		this.eventStack.splice(i,1);
 	}
 	
 	this.engineLog = function(message){
@@ -141,11 +190,13 @@ function GameEngine(){
 	
 	this.stop = function(){
 		this.loopState=0;
+		this.purgeEvents();
 		this.purgeObjects();
 		this.render(this.display);
 	}
 	
 	this.frame = function(){
+		gameEngineThis.frameCount++;
 		gameEngineThis.update();	
 		gameEngineThis.render(gameEngineThis.display);
 		if(gameEngineThis.loopState){

@@ -30,6 +30,7 @@ function Ball(){
 		this.y = Math.findYofCircleByDegrees(this.y,speed,this.direction);
 		this.x = Math.findXofCircleByDegrees(this.x,speed,this.direction);
 		if(this.x<0){
+			this.gameEngine.addEvent(new this.gameEngine.Event());
 			this.x=0;
 			var wallX = 0;
 			var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);

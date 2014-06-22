@@ -6,6 +6,7 @@ myDom.OnReady(function(){
 	myEngine.setDisplay("screen");
 	myDom.getId("newGameButton").addEventListener("click", function(){
 		myEngine.stop();
+		var hudId = myEngine.addObject(new HUD());
 		var playerOneId = myEngine.addObject(new Player("left","red","Player One"));
 		var ballId = myEngine.addObject(new Ball());
 		myEngine.init();
