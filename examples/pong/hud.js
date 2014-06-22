@@ -12,17 +12,14 @@ function HUD(){
 	}
 	
 	this.EventLisener = function(e){
-		console.log("event: "+this.gameEngine.getIndexOfEventByName("point"));
-		if(this.gameEngine.getIndexOfEventByName("point")>0){
-			console.log("point");
-			if(e[this.gameEngine.getIndexOfEventByName("point")].player==1){
+		var pointEvent = this.gameEngine.getEventInStack("point",true);
+		if(pointEvent){
+			if(pointEvent.player==1){
 				this.playerOneScore++;
 			}else{
 				this.playerTwoScore++;
 			}
-			this.gameEngine.removeEventByIndex(this.gameEngine.getIndexOfEventByName("point"));
 		}
-		
 	}
 	
 	this.draw = function(g){

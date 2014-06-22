@@ -51,6 +51,19 @@ function GameEngine(){
 		return this;
 	}
 	
+	this.getEventInStack = function(name,consume){
+		var index = this.getIndexOfEventByName(name);
+		if(index>-1){
+			var event = this.eventStack[index];
+			if(consume){
+				this.removeEventByIndex(index);
+			}
+			return event;
+		}else{
+			return false;
+		}
+	}
+	
 	this.addEvent = function(e){
 		this.eventStack.push(e);
 		if(this.eventStack.lenth<=this.eventStackIndex){
