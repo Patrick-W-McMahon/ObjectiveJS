@@ -57,7 +57,7 @@ function Ball(){
 			this.direction=w;
 			//this.direction = 2 * (90 - this.direction) + 180;
 		}
-		var errorBuffer = 4;
+		var errorBuffer = 3;
 		if(this.x<-errorBuffer||this.y<-errorBuffer||this.x>this.gameEngine.getDisplayWidth()+errorBuffer||this.y>this.gameEngine.getDisplayHeight()+errorBuffer){
 			this.x = this.gameEngine.getDisplayWidth()/2;
 			this.y = this.gameEngine.getDisplayHeight()/2; 
