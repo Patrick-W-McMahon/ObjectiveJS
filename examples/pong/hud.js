@@ -1,5 +1,7 @@
 function HUD(){
 	this.gameEngine;
+	this.playerOneScore=0;
+	this.playerTwoScore=0;
 
 	this.init = function(e){
 		this.gameEngine = e;
@@ -9,6 +11,20 @@ function HUD(){
 
 	}
 	
+	this.EventLisener = function(e){
+		console.log("event: "+this.gameEngine.getIndexOfEventByName("point"));
+		if(this.gameEngine.getIndexOfEventByName("point")>0){
+			console.log("point");
+			if(e[this.gameEngine.getIndexOfEventByName("point")].player==1){
+				this.playerOneScore++;
+			}else{
+				this.playerTwoScore++;
+			}
+			this.gameEngine.removeEventByIndex(this.gameEngine.getIndexOfEventByName("point"));
+		}
+		
+	}
+	
 	this.draw = function(g){
 		g.fillStyle = "black";
 		g.font="12px Verdana";
@@ -16,6 +32,10 @@ function HUD(){
 			g.fillText("Ready ",this.gameEngine.getDisplayWidth()/2,this.gameEngine.getDisplayHeight()/2);
 		}else if(this.gameEngine.frameCount>100&&this.gameEngine.frameCount<130){
 			g.fillText("GO!! ",this.gameEngine.getDisplayWidth()/2,this.gameEngine.getDisplayHeight()/2);
+		}else{
+			g.font="8px Verdana";
+			g.fillText(""+this.playerOneScore,10,10);
+			g.fillText(""+this.playerTwoScore,this.gameEngine.getDisplayWidth()-15,9);
 		}
 		
 	}

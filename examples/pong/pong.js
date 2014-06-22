@@ -1,6 +1,6 @@
 var myDom = new DOM();
 var myEngine = new GameEngine();
-myEngine.engineMode="test";
+myEngine.engineMode="live";
 var gamePaused=0;
 myDom.OnReady(function(){
 	myEngine.setDisplay("screen");

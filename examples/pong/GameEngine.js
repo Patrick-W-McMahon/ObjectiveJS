@@ -14,6 +14,7 @@ function GameEngine(){
 	this.engineMode="live";
 	this.frameCount=0;
 	this.eventStack=[];
+	this.eventStackIndex=0;
 	
 	this.init = function(){
 		for(var x=0;x<this.objects.length;x++){
@@ -35,8 +36,8 @@ function GameEngine(){
 			}
 			gameEngineThis.engineLog("Event Stack Length: "+this.eventStack.length);
 			if(this.eventStack.length>0){
-				if(typeof(this.objects[x].eventLisener)==='function'){
-					this.objects[x].eventListener(this.eventStack);
+				if(typeof(this.objects[x].EventLisener)==='function'){
+					this.objects[x].EventLisener(this.eventStack);
 				}
 			}
 		}
@@ -67,6 +68,17 @@ function GameEngine(){
 	
 	this.purgeEvents = function(){
 		this.eventStack = [];
+	}
+	
+	this.getIndexOfEventByName = function(name){
+		var index = -1;
+		for(var i=0;i<this.eventStack.length;i++){
+			if(this.eventStack[i].name === name){
+				index = i;
+				break;
+			}
+		}
+		return index;
 	}
 	
 	this.getIndexOfEvent = function(v){//pass id of event
@@ -161,6 +173,23 @@ function GameEngine(){
 	
 	this.getDisplayWidth = function(){
 		return this.displayDomId.width;
+	}
+	
+	this.getDisplay = function(t){
+		switch(t){
+			case "heightCenter":
+				return this.displayDomId.height/2;
+			break;
+			case "widthCenter":
+				return this.displayDomId.width/2;
+			break;
+			case "height":
+				return this.displayDomId.height;
+			break;
+			case "width":
+				return this.displayDomId.width;
+			break;
+		}
 	}
 	
 	this.clearScreen = function(g){

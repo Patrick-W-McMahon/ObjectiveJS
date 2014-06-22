@@ -9,8 +9,12 @@ function Ball(){
 	
 	this.init = function(e){
 		this.gameEngine = e;
-		this.x = e.getDisplayWidth()/2;
-		this.y = e.getDisplayHeight()/2; 
+		this.resetBall();
+	}
+	
+	this.resetBall = function(){
+		this.x = this.gameEngine.getDisplay("widthCenter");
+		this.y = this.gameEngine.getDisplay("heightCenter"); 
 		this.direction = Math.randomNumberRange(0,360);
 	}
 	
@@ -31,19 +35,25 @@ function Ball(){
 			this.y = Math.findYofCircleByDegrees(this.y,speed,this.direction);
 			this.x = Math.findXofCircleByDegrees(this.x,speed,this.direction);
 			if(this.x<0){
-				this.gameEngine.addEvent({name:"pointForPC"});
+				this.gameEngine.addEvent({name:"point",player:2});
+				this.resetBall();
+				/*
 				this.x=0;
 				var wallX = 0;
 				var wallY = Math.findYofCircleByDegrees(this.y,speed,this.direction);
 				this.direction = Math.AngleOfReflection(Math.angleOfTwoLines(this.x,this.y,wallX,wallY));
+				*/
 			}
 			if(this.x+this.radius>this.gameEngine.getDisplayWidth()){
-				this.gameEngine.addEvent({name:"pointForPlayer"});
+				this.gameEngine.addEvent({name:"point",player:1});
+				this.resetBall();
+				/*
 				var v=this.direction;
 				var n=90;
 				var u = (v*n/n*n)*n;
 				var w=v-u;
 				this.direction=w;
+				*/
 				//this.direction = 2 * (90 - this.direction) + 180;
 			}
 			if(this.y<0){
@@ -61,9 +71,9 @@ function Ball(){
 				//this.direction = 2 * (90 - this.direction) + 180;
 			}
 			var errorBuffer = 3;
-			if(this.x<-errorBuffer||this.y<-errorBuffer||this.x>this.gameEngine.getDisplayWidth()+errorBuffer||this.y>this.gameEngine.getDisplayHeight()+errorBuffer){
-				this.x = this.gameEngine.getDisplayWidth()/2;
-				this.y = this.gameEngine.getDisplayHeight()/2; 
+			if(this.x<-errorBuffer||this.y<-errorBuffer||this.x>this.gameEngine.getDisplay("width")+errorBuffer||this.y>this.gameEngine.getDisplay("height")+errorBuffer){
+				this.x = this.gameEngine.getDisplay("widthCenter");
+				this.y = this.gameEngine.getDisplay("heightCenter"); 
 				this.direction = Math.randomNumberRange(0,360);
 			}
 		}
