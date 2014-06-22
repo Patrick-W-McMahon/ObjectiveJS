@@ -13,6 +13,14 @@ function GameEngine(){
 	this.keysPressed=[];
 	this.engineMode="live";
 	
+	this.init = function(){
+		for(var x=0;x<this.objects.length;x++){
+			if(typeof(this.objects[x].init)==='function'){
+				this.objects[x].init(gameEngineThis);
+			}
+		}
+	}
+	
 	this.update = function(){
 		for(var x=0;x<this.objects.length;x++){
 			if(typeof(this.objects[x].update)==='function'){

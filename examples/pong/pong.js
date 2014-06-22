@@ -8,6 +8,7 @@ myDom.OnReady(function(){
 	myDom.getId("newGameButton").addEventListener("click", function(){
 		myEngine.stop();
 		var playerOneId = myEngine.addObject(new Player("left","red","Player One"));
+		myEngine.init();
 		myEngine.start();
 	}, false);
 	myDom.getId("PauseButton").addEventListener("click", function(){

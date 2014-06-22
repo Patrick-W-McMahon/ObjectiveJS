@@ -11,21 +11,32 @@ function Player(s,c,n){
 	var x=10;
 	var y=10;
 	var speed=1;
+	var gameEngine;
 	
 	//this.prototype.ObjectType = "Player";
 	
 	this.setPlayerType = function(t){
 		this.type=t;
 	};
+	
+	this.init = function(e){
+		this.gameEngine = e;
+	}
 
 	this.input = function(keyDown,keyPress,KeyUp){
 		if(keyDown.indexOf(40)){//up key
 			console.log("up");
 			y=y-speed;
+			if(y<0){
+				y=0;
+			}
 		}
 		if(keyDown.indexOf(38)){//down key
 			console.log("down");
 			y=y+speed;
+			if(y+paddleLength>this.gameEngine.getDisplayHeight()){
+				y=this.gameEngine.getDisplayHeight()-paddleLength;
+			}
 		}
 	}
 		
