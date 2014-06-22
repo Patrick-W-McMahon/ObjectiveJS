@@ -2,14 +2,23 @@
 <html>
 <head>
 	<title>Pong</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="../../core.o.js"></script>
-	<script type="text/javascript" src="../../math.o.js"></script>
-	<script type="text/javascript" src="pong.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="../../core.o.js"></script>
+	<script src="../../math.o.js"></script>
+	<script src="../../dom.o.js"></script>
+	<script src="player.js"></script>
+	<script src="GameEngine.js"></script>
+	<script src="pong.js"></script>
 </head>
+<h4 id="FPS">FPS: <span>0</span> Cycles: <span>0</span></h4>
+<nav>
+	<button id="newGameButton">New Game</button>
+	<button id="PauseButton">Pause</button>
+	<button id="quitButton">Quit</button>
+</nav>
 <body>
 	<h1>Pong Example</h1>
-	<canvas>
+	<canvas id="screen">
 		<p>your browser will not support canvas, upgrade your browser.</p>
 	</canvas>
 </body>

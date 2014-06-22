@@ -14,13 +14,13 @@ Object.include = function(file) {
 	window.document.body.appendChild(e);
 };
 
-Object.unset(){
+Object.unset = function(){
 	delete this;
-}
+};
 
-Object.replaceWithValid = function(default){
+Object.replaceWithValid = function(d){//pass default
 	if(this==undefined||this==null){
-		return default;
+		return d;
 	}
 	return this;
 };

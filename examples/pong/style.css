@@ -16,3 +16,30 @@ canvas{
   height:400px;
   width:800px;
 }
+
+#FPS{
+	position:fixed;
+	top:0px;
+	left:0px;
+	padding:0px;
+	margin:0px;
+}
+
+#FPS[display=low] span{
+	color:#ff0800;
+}
+
+#FPS[display=medium] span{
+	color:#ccff00;
+}
+
+#FPS[display=high] span{
+	color:#58ff00;
+}
+
+
+nav{
+	position:fixed;
+	top:0px;
+	right:0px;
+}
