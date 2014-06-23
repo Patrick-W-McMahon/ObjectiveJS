@@ -11,6 +11,13 @@ function HUD(){
 
 	}
 	
+	this.input = function(keyDown,keyPress,KeyUp){
+		if(keyDown.indexOf(19)>-1){//pause button
+			console.log("pause button");
+			this.gameEngine.addEvent({name:"GameEngine",message:"pause"});
+		}
+	}
+	
 	this.EventLisener = function(e){
 		var pointEvent = this.gameEngine.getEventInStack("point",true);
 		if(pointEvent){

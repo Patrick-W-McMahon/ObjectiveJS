@@ -25,6 +25,23 @@ function GameEngine(){
 	}
 	
 	this.update = function(){
+		if(this.eventStack.length>0){
+			var event = this.getEventInStack("GameEngine",true);
+			if(event){
+				gameEngineThis.engineLog("Game Engine Message Received ("+event.message+")");
+				switch(event.message){
+					case "start":
+						this.start();
+					break;
+					case "pause":
+						this.pause();
+					break;
+					case "stop":
+						this.stop();
+					break;
+				}
+			}
+		}
 		for(var x=0;x<this.objects.length;x++){
 			if(typeof(this.objects[x].update)==='function'){
 				this.objects[x].update();

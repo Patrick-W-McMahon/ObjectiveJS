@@ -8,6 +8,7 @@ myDom.OnReady(function(){
 		myEngine.stop();
 		var hudId = myEngine.addObject(new HUD());
 		var playerOneId = myEngine.addObject(new Player("left","red","Player One"));
+		var playerTwoId = myEngine.addObject(new Player("right","blue","Player Two"));
 		var ballId = myEngine.addObject(new Ball());
 		myEngine.init();
 		myEngine.start();
