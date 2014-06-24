@@ -1,4 +1,7 @@
 function Rectangle(cx,cy,ch,cw){
+	if(isNaN(cx)||isNaN(cy)||isNaN(ch)||isNaN(cw)){
+		return false;
+	}
 	this.x=cx;
 	this.y=cy;
 	this.height=ch;
