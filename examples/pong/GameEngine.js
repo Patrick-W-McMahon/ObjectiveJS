@@ -97,7 +97,7 @@ function GameEngine(){
 	}
 	
 	this.purgeEvents = function(){
-		this.eventStack = [];
+		this.eventStack.clear();
 	}
 	
 	this.getIndexOfEventByName = function(name){
@@ -141,9 +141,9 @@ function GameEngine(){
 	}
 	
 	this.clearKeys = function(){
-		this.keysDown=[];
-		this.keysPressed=[];
-		this.keysUp=[];
+		this.keysDown.clear();
+		this.keysPressed.clear();
+		this.keysUp.clear();
 	}
 	
 	window.onkeydown = function(e){
@@ -175,7 +175,7 @@ function GameEngine(){
 	}
 	
 	this.purgeObjects = function(){
-		this.objects = [];
+		this.objects.clear();
 	}
 	
 	this.removeObject = function(id){//pass id of object

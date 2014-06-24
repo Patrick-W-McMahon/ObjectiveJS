@@ -83,6 +83,9 @@ function Ball(){
 	
 	this.draw = function(g){
 		g.fillStyle = "black";
-		g.fillRect(this.x,this.y,this.radius*2,this.radius*2);
+		//g.fillRect(this.x,this.y,this.radius*2,this.radius*2);
+		g.beginPath();
+		g.arc(this.x,this.y,this.radius,0,2*Math.PI);
+		g.fill();
 	}
 }

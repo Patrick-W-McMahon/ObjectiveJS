@@ -26,7 +26,7 @@ Array.bubbleSort = function(){
 	}while(swapped);
 }
 
- 
+ /*
 Array.quickSort = function(){
     var stack = [this];
     var sorted = [];
@@ -38,8 +38,8 @@ Array.quickSort = function(){
         }
         var pivot = temp[0];
         var left = [], right = [];
-        for (var i = 1; i &lt; tl; i++) {
-            if (temp[i] &lt; pivot) {
+        for (var i = 1; i < tl; i++) {
+            if (temp[i] < pivot) {
                 left.push(temp[i]);
             } else {
                 right.push(temp[i]);
@@ -53,7 +53,10 @@ Array.quickSort = function(){
     }
     this=sorted;
 }
+
+*/
  
+/*
 Array.mergeSort = function(){
     if (this.length < 2)
         return this;
@@ -80,9 +83,11 @@ Array.merge = function(left, right){
         result.push(right.shift());
     return result;
 }
+*/
 
-Array.clear = function(){
+Array.prototype.clear = function(){
 	while(this.length>0){
 		this.pop();
 	}
+	return 0;
 };
