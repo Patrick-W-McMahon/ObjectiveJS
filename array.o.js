@@ -81,3 +81,8 @@ Array.merge = function(left, right){
     return result;
 }
 
+Array.clear = function(){
+	while(this.length>0){
+		this.pop();
+	}
+};
