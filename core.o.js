@@ -14,9 +14,13 @@ Object.include = function(file) {
 	window.document.body.appendChild(e);
 };
 
-Object.replaceWithValid = function(default){
+Object.unset = function(){
+	delete this;
+};
+
+Object.replaceWithValid = function(d){//pass default
 	if(this==undefined||this==null){
-		return default;
+		return d;
 	}
 	return this;
 };
@@ -45,12 +49,4 @@ Object.functionTestExeElse = function(e){
 
 Object.isNumber = function() {
 	return !isNaN(parseFloat(this)) && isFinite(this);
-};
-
-Object.thisOrThat = function(a,b){
-	return (typeof a === "undefined")? a : b;
-};
-
-Object.thisOrThatInObj = function(obj,a,b){
-	return (a in obj)? obj[a] : b;	
 };

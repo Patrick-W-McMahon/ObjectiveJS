@@ -10,6 +10,10 @@ Math.smaller = function(a,b){
 	return (a<b)?a:b;
 };
 
+Math.angleOfTwoLines = function(x1,y1,x2,y2){
+	return Math.atan2(y2-y1,x2-x1);
+}
+
 Math.distance2Points = function(y1,x1,y2,x2) {
 	var R = 1;
 	var dY = (y2-x1) * Math.PI / 180;
@@ -66,6 +70,21 @@ Math.radiansToDegrees = function(ra){
 Math.degreesToRadians = function(deg){
 	return deg*(Math.PI/180);
 };
+
+
+Math.findXYofCircleByDegrees = function(xCenter,yCenter,radius,angle){
+	var x = xCenter + radius * Math.cos(angle);
+	var y = yCenter + radius * Math.sin(angle);
+	return [x,y];
+}
+
+Math.findYofCircleByDegrees = function(yCenter,radius,angle){
+	return yCenter + radius * Math.sin(angle);
+}
+
+Math.findXofCircleByDegrees = function(xCenter,radius,angle){
+	return xCenter + radius * Math.cos(angle);
+}
 
 Math.reflection = function(x,y){
 	var Val = [];
