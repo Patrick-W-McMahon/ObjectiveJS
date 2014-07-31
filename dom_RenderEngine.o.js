@@ -14,7 +14,28 @@
       elm.onclick = "javascript:location.href='"+elm.getAttribute("href")+"';return false";
     }
     if(elm.tagName.toLowerCase()=="include"&&elm.hasAttribute("src")){
-      switch(elm.getAttribute("type").toLowerCase()){
+      var dataType;
+      if(elm.hasAttribute("type")){
+        dataType = elm.getAttribute("type").toLowerCase();
+      }else{
+        dataType = elm.getAttribute("src").split(".");
+        dataType = dataType[dataType.length-1];
+        switch(dataType.toLowerCase()){
+          case "js":
+            dataType = "javascript";
+          break;
+          case "css":
+            dataType = "css";
+          break;
+          default:
+          case "html":
+          case "htm":
+          case "xhtml":
+            dataType = "html";
+          break;
+        }
+      }
+      switch(dataType){
         case "javascript":
           //get external javascript and add it to the page. 
         break;
