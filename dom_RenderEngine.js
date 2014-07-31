@@ -16,10 +16,10 @@
     if(elm.tagName.toLowerCase()=="include"&&elm.hasAttribute("src")){
       switch(elm.getAttribute("type").toLowerCase()){
         case "javascript":
-          
+          //get external javascript and add it to the page. 
         break;
         case "css":
-          
+          //get external css and add it to the page.
         break;
         default:
         case "html":
