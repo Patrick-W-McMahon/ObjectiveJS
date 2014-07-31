@@ -55,7 +55,12 @@
             xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 ) {
                if(xmlhttp.status == 200){
-                   document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                  var doc = xmlhttp.responseText;
+                  var domElms = doc.body.childNodes;
+                  for(var i=0; i<domElms.length; i++){
+                    domElms[i].parentNode.insertBefore(elm, domElms[i]);
+                  }
+                  elm.parentNode.removeChild(elm);
                }else if(xmlhttp.status == 400){
                   console.log('There was an error 400')
                }else{
@@ -63,12 +68,7 @@
                }
             }
             xmlhttp.open("GET", elm.getAttribute("src"), true);
-            var doc = xmlhttp.send();
-            var domElms = doc.body.childNodes;
-            for(var i=0; i<domElms.length; i++){
-              domElms[i].parentNode.insertBefore(elm, domElms[i]);
-            }
-            
+            xmlhttp.send();
         break;
       }
     }
