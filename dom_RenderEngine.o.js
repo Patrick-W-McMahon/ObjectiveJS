@@ -8,6 +8,10 @@
       
     }  
   })(document.body);
+  
+  function renderDOM(){//function to be called by console or javascript to run the render engine again.
+    traversDom(document.body);
+  }
 
   function renderElm(elm){
     if(elm.hasAttribute("href")&&elm.tagName.toLowerCase()!=="a"){
