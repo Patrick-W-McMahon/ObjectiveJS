@@ -11,7 +11,7 @@
 
   function renderElm(elm){
     if(elm.hasAttribute("href")&&elm.tagName.toLowerCase()!=="a"){
-      elm.onclick = "javascript:location.href='"+elm.getAttribute("href")+"'";
+      elm.onclick = "javascript:location.href='"+elm.getAttribute("href")+"';return false";
     }
   }
   
