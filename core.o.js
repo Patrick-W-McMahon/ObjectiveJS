@@ -8,6 +8,12 @@ Function.prototype.extends = function(parent){
 	this.prototype.constructor = this;
 };
 
+Function.include = function(file) {
+	var e=window.document.createElement('script');
+	e.setAttribute('src',file);
+	window.document.body.appendChild(e);
+};
+
 Object.include = function(file) {
 	var e=window.document.createElement('script');
 	e.setAttribute('src',file);
