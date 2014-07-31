@@ -53,7 +53,7 @@
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
             xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 ) {
+              if (xmlhttp.readyState == 4 ) {
                if(xmlhttp.status == 200){
                   var doc = xmlhttp.responseText;
                   var domElms = doc.body.childNodes;
@@ -66,6 +66,7 @@
                }else{
                    console.log('something else other than 200 was returned')
                }
+              }
             }
             xmlhttp.open("GET", elm.getAttribute("src"), true);
             xmlhttp.send();
