@@ -8,4 +8,21 @@ function DOM(){
 	this.getId = function(i){
 		return document.getElementById(i);
 	}
+	
+	this.getChildren(elm){
+		return elm.childNodes;
+	}
+	
+	this.findTags(tagName,elm){
+		var results = [];
+		(function traversDom(tagName,elm){
+    			var childNodes = elm.childNodes;
+			for(var i=0; i<childNodes.length; i++) {
+				if(childNodes[i].tagName.toLowerCase()==tagName.toLowerCase()){
+					results.push(childNodes[i]);
+					traversDom(childNodes[i]);
+				}
+			}  
+		})(tagName,elm);
+	}
 };
