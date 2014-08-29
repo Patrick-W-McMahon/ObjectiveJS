@@ -20,7 +20,9 @@ function DOM(){
 			for(var i=0; i<childNodes.length; i++) {
 				if(childNodes[i].tagName.toLowerCase()==tagName.toLowerCase()){
 					results.push(childNodes[i]);
-					traversDom(childNodes[i]);
+				}
+				if(childNodes[i].childNodes.length>0){
+					traversDom(childNodes[i]);	
 				}
 			}  
 		})(tagName,elm);
