@@ -15,14 +15,14 @@ function DOM(){
 	
 	this.findTags(tagName,elm){
 		var results = [];
-		(function traversDom(tagName,elm){
+		(function traversNodes(tagName,elm){
     			var childNodes = elm.childNodes;
 			for(var i=0; i<childNodes.length; i++) {
 				if(childNodes[i].tagName.toLowerCase()==tagName.toLowerCase()){
 					results.push(childNodes[i]);
 				}
 				if(childNodes[i].childNodes.length>0){
-					traversDom(childNodes[i]);	
+					traversNodes(childNodes[i]);	
 				}
 			}  
 		})(tagName,elm);
