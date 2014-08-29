@@ -14,9 +14,19 @@
   }
 
   function renderElm(elm){
+    plugin_everythingLinks(elm);
+    plugin_includeTag(elm);
+  }
+  
+})();
+
+  function plugin_everythingLinks(elm){
     if(elm.hasAttribute("href")&&elm.tagName.toLowerCase()!=="a"){
       elm.onclick = "javascript:location.href='"+elm.getAttribute("href")+"';return false";
     }
+  }
+  
+  function plugin_includeTag(elm){
     if(elm.tagName.toLowerCase()=="include"&&elm.hasAttribute("src")){
       var dataType;
       if(elm.hasAttribute("type")){
@@ -78,5 +88,4 @@
       }
     }
   }
-  
-})();
+}
