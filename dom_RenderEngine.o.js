@@ -14,8 +14,11 @@
   }
 
   function renderElm(elm){
-    plugin_everythingLinks(elm);
-    plugin_includeTag(elm);
+    if(typeof(elm)=="object"&&elm.tagName!=null){
+      plugin_everythingLinks(elm);
+      plugin_includeTag(elm);
+      plugin_AutoCollapse(elm);
+    }
   }
   
 })();
@@ -24,6 +27,18 @@
     if(elm.hasAttribute("href")&&elm.tagName.toLowerCase()!=="a"){
       elm.onclick = "javascript:location.href='"+elm.getAttribute("href")+"';return false";
     }
+  }
+  
+  function plugin_AutoCollapse(elm){
+	  if(elm.hasAttribute("autoCollapse")){
+		  var cn = elm.childNodes;
+		  if(elm.childElementCount==0){
+			  document.body.classList.add("no-"+elm.id);
+			  elm.parentNode.removeChild(elm);
+		  }else{
+			  document.body.classList.add("yes-"+elm.id);
+		  }
+	  }
   }
   
   function plugin_includeTag(elm){
