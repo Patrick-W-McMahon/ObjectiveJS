@@ -50,3 +50,5 @@ Object.functionTestExeElse = function(e){
 Object.isNumber = function() {
 	return !isNaN(parseFloat(this)) && isFinite(this);
 };
+
+window.XMLHttpRequest = new(window.XMLHttpRequest || ActiveXObject)('MSXML2.XMLHTTP.3.0');
